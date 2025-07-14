@@ -36,12 +36,6 @@ brew install sketchybar
 brew install borders
 brew install yabai
 
-### Science
-brew install mactex
-brew install hdf5
-brew install gnuplot
-brew install texlab
-
 ### Terminal
 brew install neovim
 brew install helix
@@ -68,14 +62,6 @@ brew install --cask alacritty
 brew install --cask kitty
 brew install --cask orion
 
-### Office
-brew install --cask inkscape
-brew install --cask libreoffice
-brew install --cask zoom
-brew install --cask meetingbar
-brew install --cask skim
-brew install --cask vlc
-
 ### Reversing
 brew install --cask machoview
 brew install --cask hex-fiend
@@ -99,6 +85,9 @@ echo "Installing Mac App Store Apps..."
 mas install 1451685025 #Wireguard
 mas install 497799835 #xCode
 mas install 1480933944 #Vimari
+mas install 1230249825 #VMware Remote Console
+mas install 1352778147 #Bitwarden
+mas install 310633997 #WhatsApp
 
 # macOS Settings
 echo "Changing macOS defaults..."
@@ -144,7 +133,7 @@ sudo defaults write /Library/Preferences/com.apple.airport.bt.plist bluetoothCoe
 
 # Copying and checking out configuration files
 echo "Planting Configuration Files..."
-[ ! -d "$HOME/dotfiles" ] && git clone --bare git@github.com:FelixKratz/dotfiles.git $HOME/dotfiles
+[ ! -d "$HOME/dotfiles" ] && git clone --bare git@github.com:Curtisjnes/dotfiles.git $HOME/dotfiles
 git --git-dir=$HOME/dotfiles/ --work-tree=$HOME checkout master
 
 # Installing Fonts
@@ -162,23 +151,6 @@ rm -rf /tmp/simple-completion-language-server
 
 source $HOME/.zshrc
 cfg config --local status.showUntrackedFiles no
-
-# Python Packages (mainly for data science)
-echo "Installing Python Packages..."
-curl https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-MacOSX-arm64.sh | sh
-source $HOME/.zshrc
-conda install -c apple tensorflow-deps
-conda install -c conda-forge pybind11
-conda install matplotlib
-conda install jupyterlab
-conda install seaborn
-conda install opencv
-conda install joblib
-conda install pytables
-pip install tensorflow-macos
-pip install tensorflow-metal
-pip install debugpy
-pip install sklearn
 
 # Start Services
 echo "Starting Services (grant permissions)..."
